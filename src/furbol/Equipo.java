@@ -143,7 +143,7 @@ public class Equipo implements Comparable<Equipo> {
                         ret.add(0, array.get(0));
                         array.remove(array.get(0));
                     } else {
-                        for (int i = 1; i < ret.size(); i++) {
+                        for (int i = 0; i < ret.size(); i++) {
                             if (ret.get(i).compareTo(array.get(0)) == -1) {
                                 ret.add(i, array.get(0));
                                 array.remove(array.get(0));
@@ -158,7 +158,7 @@ public class Equipo implements Comparable<Equipo> {
                                     array.remove(array.get(0));
                                     break;
                                 } else if (ret.get(i).getGolaverage() == array.get(0).getGolaverage()) {
-                                    if (ret.get(i).getNombre().charAt(0) > array.get(0).getNombre().charAt(0)) {
+                                    if (ret.get(i).getNombre().charAt(0) < array.get(0).getNombre().charAt(0)) {
                                         ret.add(i + 1, array.get(0));
                                         array.remove(array.get(0));
                                         break;
@@ -168,6 +168,10 @@ public class Equipo implements Comparable<Equipo> {
                                         break;
                                     }
                                 }
+                            } else if ((ret.get(i).compareTo(array.get(0)) == 1) && (i == ret.size() - 1)) {
+                                ret.add(i + 1, array.get(0));
+                                array.remove(array.get(0));
+                                break;
                             }
                         }
                     }

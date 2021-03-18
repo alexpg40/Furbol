@@ -18,12 +18,12 @@ public class Furbol {
         j.guardarObjeto();
         Jugador.leerObjeto();
         
-        Equipo ATM = new Equipo("Atletico de Madrid", 20, 2, 10, 2, 2);
-        Equipo GT = new Equipo("Getafe", 10, 2, 5, 7, 2 );
-        Equipo VAL = new Equipo("Valencia", 16, 6, 2, 2, 2);
-        Equipo RAC = new Equipo("Racing de Santader", 15, 6, 7, 5, 2);
-        Equipo OV = new Equipo("Oviedo", 6, 10, 1, 10, 3);
-        Equipo SPO = new Equipo("Sporting de Gijón", 26, 2, 10, 2, 2);
+        Equipo ATM = new Equipo("Atletico de Madrid", 20,5,10,3,2);
+        Equipo GT = new Equipo("Getafe", 12,1,8,5,2);
+        Equipo VAL = new Equipo("Valencia", 12,1,8,5,2);
+        Equipo RAC = new Equipo("Racing de Santader", 17,9,9,4,2);
+        Equipo OV = new Equipo("Oviedo", 6,20,1,5,9);
+        Equipo SPO = new Equipo("Sporting de Gijón", 2,14,0,7,8);
         
         ArrayList<Equipo> clasificacion = new ArrayList<>();
         clasificacion.add(VAL);
