@@ -5,6 +5,7 @@
  */
 package utilidades;
 
+import furbol.Equipo;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  *
@@ -86,4 +88,27 @@ public class Utilidades {
             }
         }
     }
+    
+    public static <T> void leerArrayList(ArrayList<T> array){
+        for (T t : array) {
+            System.out.println(t);
+        }
+    }
+    
+    public static <T> ArrayList<T> arraytoArrayList(T[] array){
+        ArrayList<T> ret = new ArrayList<>();
+        for (T t : array) {
+            ret.add(t);
+        }
+    return ret;}
+    
+    public static final Equipo EQUIPOS[] = {
+        new Equipo("Atletico de Madrid", 20,5,10,3,2),
+        new Equipo("Getafe", 12,1,8,5,2),
+        new Equipo("Valencia", 12,1,8,5,2),
+        new Equipo("Racing de Santader", 17,9,9,4,2),
+        new Equipo("Oviedo", 6,20,1,5,9),
+        new Equipo("Sporting de Gijón", 2,14,0,7,8)
+    };
+    
 }
