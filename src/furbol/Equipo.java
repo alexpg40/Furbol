@@ -183,7 +183,7 @@ public class Equipo implements Comparable<Equipo> {
 
     @Override
     public String toString() {
-        return this.nombre + " " + this.puntuacion;
+        return this.nombre + "|" + this.puntuacion + "|" + this.partidos + "|" + this.win + "|" + this.draw + "|" + this.lost + "|" + this.golaverage;
     }
 
 }
