@@ -14,7 +14,7 @@ public class Furbol {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        //ESPERO QUEYA FUNCIONE
         //PRUEBA CsOMMT
         ArrayList<Equipo> equipos = Utilidades.arraytoArrayList(Utilidades.EQUIPOS);
         ArrayList<Equipo> equiposc = Equipo.clasificacion(equipos);
