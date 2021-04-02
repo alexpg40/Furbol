@@ -15,7 +15,7 @@ public class Furbol {
      */
     public static void main(String[] args) {
         //ESPERO QUEYA FUNCIONE
-        //PRUEBA aspdasdCsdssOasasddassdMMT
+        //PRUEBA aspdasdCsdssOasasdsaddassdMMT
         ArrayList<Equipo> equipos = Utilidades.arraytoArrayList(Utilidades.EQUIPOS);
         ArrayList<Equipo> equiposc = Equipo.clasificacion(equipos);
         Utilidades.leerArrayList(equiposc);
