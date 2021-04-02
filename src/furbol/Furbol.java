@@ -15,7 +15,7 @@ public class Furbol {
      */
     public static void main(String[] args) {
         
-        //PRUEBA COMMIT
+        //PRUEBA COMMT
         ArrayList<Equipo> equipos = Utilidades.arraytoArrayList(Utilidades.EQUIPOS);
         ArrayList<Equipo> equiposc = Equipo.clasificacion(equipos);
         Utilidades.leerArrayList(equiposc);
