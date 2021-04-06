@@ -5,7 +5,7 @@
  */
 package furbol;
 
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import utilidades.Utilidades;
 
 public class Furbol {
@@ -14,10 +14,11 @@ public class Furbol {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //CREO QUE YA FUNCIONA
-        ArrayList<Equipo> equipos = Utilidades.arraytoArrayList(Utilidades.EQUIPOS);
-        ArrayList<Equipo> equiposc = Equipo.clasificacion(equipos);
-        Utilidades.leerArrayList(equiposc);
+        
+        LinkedHashSet<Equipo> clasificacion = new LinkedHashSet<>(Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
+        
+        Competicion LigaSantander = new Competicion("Liga Santander", 2022, clasificacion);
+        System.out.println(LigaSantander.winner());
         
     }
 }
