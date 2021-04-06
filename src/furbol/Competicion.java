@@ -17,6 +17,7 @@ public class Competicion {
     
     private String nombre;
     private int temporada;
+    private ArrayList<Equipo> participantes;
     private LinkedHashSet<Equipo> clasificacion;
     private ArrayList<Partido> partidos;
 
@@ -24,16 +25,17 @@ public class Competicion {
         
     } 
     
-    public Competicion(String nombre,int temporada, LinkedHashSet<Equipo> clasificacion){
+    public Competicion(String nombre,int temporada, ArrayList<Equipo> participantes){
         this.nombre = nombre;
         this.temporada = temporada;
-        this.clasificacion = clasificacion;
+        this.participantes = participantes;
     }
     
     public Competicion(Competicion e){
         this.nombre = e.nombre;
         this.temporada = e.temporada;
         this.clasificacion = e.clasificacion;
+        this.participantes = e.participantes;
     }
     
     public String getNombre() {
@@ -64,4 +66,13 @@ public class Competicion {
         Iterator it = this.getClasificacion().iterator();
         return (Equipo) it.next();
     }
+    
+    public Competicion randomGenerator(String nombre, int temporada, ArrayList<Equipo> participantes){
+        Competicion ret = new Competicion(nombre, temporada, participantes);
+        for (int i = 0; i < 10; i++) {
+            
+        }
+        
+    return ret;}
+    
 }
