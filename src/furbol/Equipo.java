@@ -126,59 +126,13 @@ public class Equipo implements Comparable<Equipo> {
      */
     @Override
     public int compareTo(Equipo o) {
-        Integer n = this.getPuntuacion();
-        Integer n2 = o.getPuntuacion();
-        return n.compareTo(n2);
-    }
-
-    public static ArrayList<Equipo> clasificacion(ArrayList<Equipo> array) {
-        ArrayList<Equipo> ret = new ArrayList<>();
-        while (!array.isEmpty()) {
-            if (ret.isEmpty()) {
-                ret.add(array.get(0));
-                array.remove(array.get(0));
-            } else {
-                while (!array.isEmpty()) {
-                    if (ret.get(0).compareTo(array.get(0)) == -1) {
-                        ret.add(0, array.get(0));
-                        array.remove(array.get(0));
-                    } else {
-                        for (int i = 0; i < ret.size(); i++) {
-                            if (ret.get(i).compareTo(array.get(0)) == -1) {
-                                ret.add(i, array.get(0));
-                                array.remove(array.get(0));
-                                break;
-                            } else if (ret.get(i).compareTo(array.get(0)) == 0) {
-                                if (ret.get(i).getGolaverage() > array.get(0).getGolaverage()) {
-                                    ret.add(i + 1, array.get(0));
-                                    array.remove(array.get(0));
-                                    break;
-                                } else if (ret.get(i).getGolaverage() < array.get(0).getGolaverage()) {
-                                    ret.add(i, array.get(0));
-                                    array.remove(array.get(0));
-                                    break;
-                                } else if (ret.get(i).getGolaverage() == array.get(0).getGolaverage()) {
-                                    if (ret.get(i).getNombre().charAt(0) < array.get(0).getNombre().charAt(0)) {
-                                        ret.add(i + 1, array.get(0));
-                                        array.remove(array.get(0));
-                                        break;
-                                    } else {
-                                        ret.add(i, array.get(0));
-                                        array.remove(array.get(0));
-                                        break;
-                                    }
-                                }
-                            } else if ((ret.get(i).compareTo(array.get(0)) == 1) && (i == ret.size() - 1)) {
-                                ret.add(i + 1, array.get(0));
-                                array.remove(array.get(0));
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+        if (this.puntuacion > o.puntuacion) {
+            return 1;
+        } else if(this.puntuacion < o.puntuacion){
+            return -1;
+        } else {
+            return this.nombre.compareTo(o.nombre);
         }
-        return ret;
     }
 
     @Override
