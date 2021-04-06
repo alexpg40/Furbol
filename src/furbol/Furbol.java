@@ -17,7 +17,7 @@ public class Furbol {
         
         LinkedHashSet<Equipo> clasificacion = new LinkedHashSet<>(Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
         
-        Competicion LigaSantander = new Competicion("Liga Santander", 2022, clasificacion);
+        Competicion LigaSantander = new Competicion();
         System.out.println(LigaSantander.winner());
         
     }
