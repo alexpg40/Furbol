@@ -17,9 +17,9 @@ public class Competicion {
     
     private String nombre;
     private int temporada;
-    private ArrayList<Equipo> participantes;
+    private ArrayList<Equipo> participantes = new ArrayList<>();;
     private LinkedHashSet<Equipo> clasificacion;
-    private ArrayList<Partido> partidos;
+    private ArrayList<Partido> partidos = new ArrayList<>();
 
     public Competicion(){
         
@@ -29,6 +29,7 @@ public class Competicion {
         this.nombre = nombre;
         this.temporada = temporada;
         this.participantes = participantes;
+        this.clasificacion = new LinkedHashSet<>(participantes);
     }
     
     public Competicion(Competicion e){
@@ -61,18 +62,52 @@ public class Competicion {
     public void setClasificacion(LinkedHashSet<Equipo> clasificacion) {
         this.clasificacion = clasificacion;
     }
+
+    public ArrayList<Equipo> getParticipantes() {
+        return participantes;
+    }
+
+    public void setParticipantes(ArrayList<Equipo> participantes) {
+        this.participantes = participantes;
+    }
+
+    public ArrayList<Partido> getPartidos() {
+        return partidos;
+    }
+
+    public void setPartidos(ArrayList<Partido> partidos) {
+        this.partidos = partidos;
+    }
+    
+    
     
     public Equipo winner(){
         Iterator it = this.getClasificacion().iterator();
         return (Equipo) it.next();
     }
     
-    public Competicion randomGenerator(String nombre, int temporada, ArrayList<Equipo> participantes){
+    public Competicion newCompeticion(String nombre, int temporada, ArrayList<Equipo> participantes){
         Competicion ret = new Competicion(nombre, temporada, participantes);
-        for (int i = 0; i < 10; i++) {
-            
+        for (Equipo e : participantes) {
+            for (Equipo eq : participantes) {
+                Partido local;
+                Partido visitante;
+                if (!e.equals(eq)) {
+                    local = new Partido(e.getId(), eq.getId());
+                    ret.getPartidos().add(local);
+                }
+            }
         }
+        ret.setParticipantes(participantes);
         
     return ret;}
+    
+    public void infoCompeticion(){
+        System.out.println("El nombre de la competicion es " + this.nombre);
+        System.out.println("Participan los siguentes equipos:");
+        for (Equipo e : this.participantes) {
+            System.out.println(e.getNombre());
+        }
+    }
     
 }
