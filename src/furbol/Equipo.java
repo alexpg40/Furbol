@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Equipo implements Comparable<Equipo> {
 
+    private int id;
     private String nombre;
     private int golesFavor;
     private int golesContra;
@@ -26,7 +27,8 @@ public class Equipo implements Comparable<Equipo> {
     public Equipo() {
     }
 
-    public Equipo(String nombre, int golesFavor, int golesContra, int win, int draw, int lost) {
+    public Equipo(int id, String nombre, int golesFavor, int golesContra, int win, int draw, int lost) {
+        this.id = id;
         this.nombre = nombre;
         this.golesFavor = golesFavor;
         this.golesContra = golesContra;
@@ -49,6 +51,14 @@ public class Equipo implements Comparable<Equipo> {
         this.lost = e.lost;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }
