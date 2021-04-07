@@ -103,12 +103,12 @@ public class Utilidades {
     return ret;}
     
     public static final Equipo EQUIPOS[] = {
-        new Equipo("Atletico de Madrid", 20,5,10,3,2),
-        new Equipo("Getafe", 12,1,8,5,2),
-        new Equipo("Valencia", 12,1,8,5,2),
-        new Equipo("Racing de Santader", 17,9,9,4,2),
-        new Equipo("Oviedo", 6,20,1,5,9),
-        new Equipo("Sporting de Gijón", 2,14,0,7,8)
+        new Equipo(1, "Atletico de Madrid", 20,5,10,3,2),
+        new Equipo(2, "Getafe", 12,1,8,5,2),
+        new Equipo(3, "Valencia", 12,1,8,5,2),
+        new Equipo(4, "Racing de Santader", 17,9,9,4,2),
+        new Equipo(5, "Oviedo", 6,20,1,5,9),
+        new Equipo(6, "Sporting de Gijón", 2,14,0,7,8)
     };
     
 }
