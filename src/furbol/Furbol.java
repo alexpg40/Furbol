@@ -18,7 +18,7 @@ public class Furbol {
         LinkedHashSet<Equipo> clasificacion = new LinkedHashSet<>(Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
         
         Competicion LigaSantander = new Competicion();
-        Competicion newCompeticion = LigaSantander.newCompeticion("Liga Santader", 231, Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
-        newCompeticion.infoCompeticion();
+        Competicion newCompeticion = LigaSantander.newCompeticion("Liga Santander", 2021, Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
+        Utilidades.leerArrayList(newCompeticion.gamesOf(Utilidades.EQUIPOS[0]));
     }
 }
