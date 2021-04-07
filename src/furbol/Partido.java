@@ -5,6 +5,8 @@
  */
 package furbol;
 
+import java.sql.Date;
+
 /**
  *
  * @author Alex Perez
@@ -15,6 +17,7 @@ public class Partido {
     private int idequipovisitante;
     private int goleslocal;
     private int golesvisitante;
+    private Date fecha;
 
     public Partido() {
 
@@ -71,4 +74,19 @@ public class Partido {
         this.golesvisitante = golesvisitante;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+    @Override
+    public String toString() {
+        return Equipo.getEquipoByID(this.idequipolocal).getNombre() + " vs " + Equipo.getEquipoByID(this.idequipovisitante).getNombre();
+    }
+
+    
+    
 }
