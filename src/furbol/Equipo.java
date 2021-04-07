@@ -5,7 +5,7 @@
  */
 package furbol;
 
-import java.util.ArrayList;
+import utilidades.Utilidades;
 
 /**
  *
@@ -143,6 +143,15 @@ public class Equipo implements Comparable<Equipo> {
         } else {
             return this.nombre.compareTo(o.nombre);
         }
+    }
+    
+    public static Equipo getEquipoByID(int id){
+        for (Equipo e : Utilidades.EQUIPOS) {
+            if (e.id == id) {
+                return e;
+            }
+        }
+        return null;
     }
 
     @Override
