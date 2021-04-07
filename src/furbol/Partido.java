@@ -13,18 +13,21 @@ public class Partido {
 
     private int idequipolocal;
     private int idequipovisitante;
-    private String resultado;
     private int goleslocal;
     private int golesvisitante;
 
     public Partido() {
 
     }
-
+    
+    public Partido(int idequipolocal, int idequipovisitante){
+        this.idequipolocal = idequipolocal;
+        this.idequipovisitante = idequipovisitante;
+    }
+    
     public Partido(int idequipolocal, int idequipovisitante, String resultado, int goleslocal, int golesvisitante) {
         this.idequipolocal = idequipolocal;
         this.idequipovisitante = idequipovisitante;
-        this.resultado = resultado;
         this.goleslocal = goleslocal;
         this.golesvisitante = golesvisitante;
     }
@@ -32,7 +35,6 @@ public class Partido {
     public Partido(Partido p) {
         this.idequipolocal = p.idequipolocal;
         this.idequipovisitante = p.idequipovisitante;
-        this.resultado = p.resultado;
         this.goleslocal = p.goleslocal;
         this.golesvisitante = p.golesvisitante;
     }
@@ -51,14 +53,6 @@ public class Partido {
 
     public void setIdequipovisitante(int idequipovisitante) {
         this.idequipovisitante = idequipovisitante;
-    }
-
-    public String getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
     }
 
     public int getGoleslocal() {
