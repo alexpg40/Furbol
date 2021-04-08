@@ -27,6 +27,10 @@ public class Equipo implements Comparable<Equipo> {
     public Equipo() {
     }
 
+    public Equipo(String nombre){
+        this.nombre = nombre;
+    }
+    
     public Equipo(int id, String nombre, int golesFavor, int golesContra, int win, int draw, int lost) {
         this.id = id;
         this.nombre = nombre;
@@ -159,4 +163,9 @@ public class Equipo implements Comparable<Equipo> {
         return this.nombre + "|" + this.puntuacion + "|" + this.partidos + "|" + this.win + "|" + this.draw + "|" + this.lost + "|" + this.golaverage;
     }
 
+    public static Equipo createTeam(String name){
+        Equipo team = new Equipo(name);
+    return team;
+    }
+    
 }
