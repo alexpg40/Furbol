@@ -87,18 +87,8 @@ public class Competicion {
     
     public Competicion newCompeticion(String nombre, int temporada, ArrayList<Equipo> participantes) {
         Competicion ret = new Competicion(nombre, temporada, participantes);
-        for (Equipo e : participantes) {
-            for (Equipo eq : participantes) {
-                Partido local;
-                Partido visitante;
-                if (!e.equals(eq)) {
-                    local = new Partido(e.getId(), eq.getId());
-                    ret.getPartidos().add(local);
-                }
-            }
-        }
-        ret.setParticipantes(participantes);
-        
+        ArrayList<Partido> matches = Partido.generateMatches(participantes);
+        ret.setPartidos(matches);;
         return ret;
     }
     
