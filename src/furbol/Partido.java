@@ -6,6 +6,7 @@
 package furbol;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -87,6 +88,18 @@ public class Partido {
         return Equipo.getEquipoByID(this.idequipolocal).getNombre() + " vs " + Equipo.getEquipoByID(this.idequipovisitante).getNombre();
     }
 
-    
+    public static ArrayList<Partido> generateMatches(ArrayList<Equipo> participantes){
+        ArrayList<Partido> ret = new ArrayList<>();
+        for (Equipo e : participantes) {
+            for (Equipo eq : participantes) {
+                Partido partido;
+                Partido visitante;
+                if (!e.equals(eq)) {
+                    partido = new Partido(e.getId(), eq.getId());
+                    ret.add(partido);
+                }
+            }
+        }
+    return ret;}
     
 }
