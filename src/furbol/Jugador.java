@@ -10,38 +10,56 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utilidades.Utilidades;
 
 /**
  *
  * @author Alex Perez
  */
-public class Jugador implements Serializable{
-    
+public class Jugador implements Serializable {
+
     private static final long serialVersionUID = 923841203981203L;
+    private int id;
     private String nombre;
     private String apellido;
     private int goles;
     private char posicion;
     private int idequipo;
-    
-    public Jugador(){
-        
+
+    public Jugador() {
+
     }
-    
-    public Jugador(String nombre, String apellido, int goles, char posicion, int idequipo){
-        this.nombre= nombre;
+
+    public Jugador(String nombre, String apellido, int idequipo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.idequipo = idequipo;
+    }
+
+    public Jugador(int id, String nombre, String apellido, int goles, char posicion, int idequipo) {
+        this.id = id;
+        this.nombre = nombre;
         this.apellido = apellido;
         this.goles = goles;
         this.posicion = posicion;
-        this.idequipo = idequipo;   
+        this.idequipo = idequipo;
     }
-    
-    public Jugador(Jugador j){
+
+    public Jugador(Jugador j) {
+        this.id = j.id;
         this.nombre = j.nombre;
         this.apellido = j.apellido;
         this.goles = j.goles;
         this.posicion = j.posicion;
         this.idequipo = j.idequipo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -83,73 +101,31 @@ public class Jugador implements Serializable{
     public void setIdequipo(int idequipo) {
         this.idequipo = idequipo;
     }
-    
-    public void guardarObjeto(){
-        OutputStream os;
-        ObjectOutput out = null;
-        try {
-            os = new FileOutputStream("jugador.txt");
-            out = new ObjectOutputStream(os);
-            out.writeObject(this);
-        } catch (FileNotFoundException ex) {
-            System.out.println("Archivo no encontrado");;
-        } catch (IOException ex) {
-            System.out.println("Error");            
-        } finally  {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException ex) {
-                    System.out.println("Error");
-                }
-            }
-        }
-    }
 
     @Override
     public String toString() {
         return "Jugador{" + "nombre=" + nombre + ", apellido=" + apellido + ", goles=" + goles + ", posicion=" + posicion + ", idequipo=" + idequipo + '}';
     }
-    
-    public static void leerObjeto(){
-        InputStream is;
-        ObjectInput in = null;
-        try {
-            is = new FileInputStream("jugador.txt");
-            in = new ObjectInputStream(is);
-            Jugador j = (Jugador) in.readObject();
-            System.out.println(j);
-        } catch (FileNotFoundException ex) {
-            System.out.println("Archivo no encontrado");
-        } catch (IOException ex) {
-            System.out.println("Error");
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Fallo al convertir el objeto a jugador");
-        } finally{
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException ex) {
-                    System.out.println("Error al cerrar el Stream");
-                }
+
+    public static ArrayList<Jugador> getJugadorByIdEquipo(int idequipo) {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        for (Jugador j : Utilidades.JUGADORES) {
+            if (j.idequipo == idequipo) {
+                jugadores.add(j);
             }
         }
+        return jugadores;
     }
-    
-    public static void guardarJugadores(ArrayList<Jugador> jugadores){
-        OutputStream os;
-        ObjectOutput ob;
-        try {
-            os = new FileOutputStream("jugadores.txt");
-            ob = new ObjectOutputStream(os);
-            for (Jugador j : jugadores) {
-                ob.writeObject(j);
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println("Archivo no encontrado");
-        } catch (IOException ex) {
-            Logger.getLogger(Jugador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+    public Equipo playIn() {
+        Equipo e = new Equipo();
+        e = Equipo.getEquipoByID(this.idequipo);
+        return e;
     }
-    
+
+    public static Jugador createPlayer(String nombre, String apellido, String equipo) {
+        Jugador ret = new Jugador(nombre, apellido, Equipo.getEquipoByName(equipo).getId());
+        return ret;
+    }
+
 }

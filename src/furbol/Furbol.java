@@ -20,5 +20,6 @@ public class Furbol {
         Competicion LigaSantander = new Competicion();
         Competicion newCompeticion = LigaSantander.newCompeticion("Liga Santander", 2021, Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
         Utilidades.leerArrayList(newCompeticion.gamesOf(Utilidades.EQUIPOS[0]));
+        
     }
 }

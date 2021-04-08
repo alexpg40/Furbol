@@ -5,13 +5,15 @@
  */
 package furbol;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import utilidades.Utilidades;
 
 /**
  *
  * @author Alex Perez
  */
-public class Equipo implements Comparable<Equipo> {
+public class Equipo implements Comparable<Equipo>, Serializable {
 
     private int id;
     private String nombre;
@@ -166,6 +168,21 @@ public class Equipo implements Comparable<Equipo> {
     public static Equipo createTeam(String name){
         Equipo team = new Equipo(name);
     return team;
+    }
+    
+    public ArrayList<Jugador> players(){
+        ArrayList<Jugador> jugadores;
+        jugadores = Jugador.getJugadorByIdEquipo(this.id);
+    return jugadores;}
+   
+    public static Equipo getEquipoByName(String nombre){
+        Equipo ret = new Equipo();
+        for (Equipo e : Utilidades.EQUIPOS) {
+            if (e.nombre.equals(nombre)) {
+                ret = e;
+            }
+        }
+    return ret;
     }
     
 }
