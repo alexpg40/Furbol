@@ -6,15 +6,26 @@
 package utilidades;
 
 import furbol.Equipo;
+import furbol.Jugador;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -71,7 +82,7 @@ public class Utilidades {
         }
     }
 
-    public static void vaciarFichero(String ubicacion){
+    public static void vaciarFichero(String ubicacion) {
         BufferedWriter bw = null;
         File f = new File(ubicacion);
         try {
@@ -88,27 +99,77 @@ public class Utilidades {
             }
         }
     }
-    
-    public static <T> void leerArrayList(ArrayList<T> array){
+
+    public static <T> void leerArrayList(ArrayList<T> array) {
         for (T t : array) {
             System.out.println(t);
         }
     }
-    
-    public static <T> ArrayList<T> arraytoArrayList(T[] array){
+
+    public static <T> ArrayList<T> arraytoArrayList(T[] array) {
         ArrayList<T> ret = new ArrayList<>();
         for (T t : array) {
             ret.add(t);
         }
-    return ret;}
+        return ret;
+    }
+
+    public static <T> ArrayList<T> leerObjetos(String direccion) {
+        ArrayList<T> ret = new ArrayList<>();
+        InputStream is;
+        ObjectInput in = null;
+        try {
+            is = new FileInputStream(direccion);
+            in = new ObjectInputStream(is);
+            while (is.available() > 0) {
+                T t = (T) in.readObject();
+                System.out.println(t);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            System.out.println("Se ha dado una IOException");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Fallo al convertir el objeto a jugador");
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException ex) {
+                    System.out.println("Error al cerrar el Stream");
+                }
+            }
+        }
+        return ret;
+    }
     
+    public static <T> void guardarObjetos(ArrayList<T> array, String direccion){
+        OutputStream os;
+        ObjectOutput ob;
+        try {
+            os = new FileOutputStream(direccion);
+            ob = new ObjectOutputStream(os);
+            for (T t : array) {
+                ob.writeObject(t);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Archivo no encontrado");
+        } catch (IOException ex) {
+            System.out.println("Se ha dado una IOException");
+        }
+    }
+
     public static final Equipo EQUIPOS[] = {
-        new Equipo(1, "Atletico de Madrid", 20,5,10,3,2),
-        new Equipo(2, "Getafe", 12,1,8,5,2),
-        new Equipo(3, "Valencia", 12,1,8,5,2),
-        new Equipo(4, "Racing de Santander", 17,9,9,4,2),
-        new Equipo(5, "Oviedo", 6,20,1,5,9),
-        new Equipo(6, "Sporting de Gijón", 2,14,0,7,8)
+        new Equipo(1, "Atletico de Madrid", 20, 5, 10, 3, 2),
+        new Equipo(2, "Getafe", 12, 1, 8, 5, 2),
+        new Equipo(3, "Valencia", 12, 1, 8, 5, 2),
+        new Equipo(4, "Racing de Santander", 17, 9, 9, 4, 2),
+        new Equipo(5, "Oviedo", 6, 20, 1, 5, 9),
+        new Equipo(6, "Sporting de Gijón", 2, 14, 0, 7, 8)
+    };
+
+    public static final Jugador JUGADORES[] = {
+        new Jugador("Joao", "Felix", 1)
     };
     
 }
