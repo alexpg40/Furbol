@@ -112,11 +112,24 @@ public class Jugador implements Serializable {
         for (Jugador j : Utilidades.JUGADORES) {
             if (j.idequipo == idequipo) {
                 jugadores.add(j);
+                break;
             }
         }
         return jugadores;
     }
 
+    
+    public static Jugador getPlayerById(int id){
+        Jugador ret = new Jugador();
+        for (Jugador j : Utilidades.JUGADORES) {
+            if (j.id == id) {
+                ret = j;
+                break;
+            }
+        }
+    return ret;
+    }
+    
     public Equipo playIn() {
         Equipo e = new Equipo();
         e = Equipo.getEquipoByID(this.idequipo);
