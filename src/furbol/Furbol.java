@@ -5,6 +5,7 @@
  */
 package furbol;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import utilidades.Utilidades;
 
@@ -15,11 +16,15 @@ public class Furbol {
      */
     public static void main(String[] args) {
         
+        ArrayList<Equipo> equipos = Utilidades.arraytoArrayList(Utilidades.EQUIPOS);
+        
         LinkedHashSet<Equipo> clasificacion = new LinkedHashSet<>(Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
         
         Competicion LigaSantander = new Competicion();
         Competicion newCompeticion = LigaSantander.newCompeticion("Liga Santander", 2021, Utilidades.arraytoArrayList(Utilidades.EQUIPOS));
-        Utilidades.leerArrayList(newCompeticion.gamesOf(Utilidades.EQUIPOS[0]));
+        newCompeticion.getPartidos().get(0).playMatch(20, 5);
+        newCompeticion.infoCompeticion();
+        newCompeticion.imprimirClasificacion();
         
     }
 }
