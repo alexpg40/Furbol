@@ -114,4 +114,11 @@ public class Competicion {
         return ret;
     }
     
+    public void imprimirClasificacion(){
+        Iterator it = this.clasificacion.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+    }
+    
 }
