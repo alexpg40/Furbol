@@ -102,4 +102,15 @@ public class Partido {
         }
     return ret;}
     
+    public void playMatch(int goleslocal, int golesvisitante){
+        this.setGoleslocal(goleslocal);
+        this.setGolesvisitante(golesvisitante);
+        Equipo local = Equipo.getEquipoByID(this.idequipolocal);
+        local.setGolesFavor(local.getGolesFavor() + goleslocal);
+        local.setGolesContra(local.getGolesContra() + golesvisitante);
+        Equipo visitante = Equipo.getEquipoByID(this.idequipovisitante);
+        visitante.setGolesFavor(visitante.getGolesFavor() + golesvisitante);
+        visitante.setGolesContra(visitante.getGolesContra() + goleslocal);
+    }
+    
 }
