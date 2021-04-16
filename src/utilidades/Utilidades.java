@@ -24,8 +24,13 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -142,8 +147,8 @@ public class Utilidades {
         }
         return ret;
     }
-    
-    public static <T> void guardarObjetos(ArrayList<T> array, String direccion){
+
+    public static <T> void guardarObjetos(ArrayList<T> array, String direccion) {
         OutputStream os;
         ObjectOutput ob;
         try {
@@ -171,5 +176,30 @@ public class Utilidades {
     public static final Jugador JUGADORES[] = {
         new Jugador("Joao", "Felix", 1)
     };
-    
+
+    public static String readXML(String TagName) {
+        DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = null;
+        String ret = "";
+        File xml = new File("ConexionBD.xml");
+        try {
+            dBuilder = dFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            System.out.println("Se ha dado un error al intentar Parsear el documento xml");
+        }
+        Document doc = null;
+        try {
+            doc = dBuilder.parse(xml);
+            doc.normalize();
+        } catch (SAXException ex) {
+            System.out.println("Se ha producido una SAXException");
+        } catch (IOException ex) {
+            System.out.println("Se ha producido una IOException");
+        }
+
+        NodeList nlist = doc.getElementsByTagName(TagName);
+        ret = nlist.item(0).getTextContent();
+        return ret;
+    }
+
 }
