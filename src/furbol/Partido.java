@@ -82,11 +82,6 @@ public class Partido {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-    @Override
-    public String toString() {
-        return Equipo.getEquipoByID(this.idequipolocal).getNombre() + " vs " + Equipo.getEquipoByID(this.idequipovisitante).getNombre();
-    }
 
     public static ArrayList<Partido> generateMatches(ArrayList<Equipo> participantes){
         ArrayList<Partido> ret = new ArrayList<>();
@@ -101,16 +96,5 @@ public class Partido {
             }
         }
     return ret;}
-    
-    public void playMatch(int goleslocal, int golesvisitante){
-        this.setGoleslocal(goleslocal);
-        this.setGolesvisitante(golesvisitante);
-        Equipo local = Equipo.getEquipoByID(this.idequipolocal);
-        local.setGolesFavor(local.getGolesFavor() + goleslocal);
-        local.setGolesContra(local.getGolesContra() + golesvisitante);
-        Equipo visitante = Equipo.getEquipoByID(this.idequipovisitante);
-        visitante.setGolesFavor(visitante.getGolesFavor() + golesvisitante);
-        visitante.setGolesContra(visitante.getGolesContra() + goleslocal);
-    }
     
 }

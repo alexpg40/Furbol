@@ -151,8 +151,8 @@ public class Equipo implements Comparable<Equipo>, Serializable {
         }
     }
     
-    public static Equipo getEquipoByID(int id){
-        for (Equipo e : Utilidades.EQUIPOS) {
+    public static Equipo getEquipoByID(int id, ArrayList<Equipo> equipos){
+        for (Equipo e : equipos) {
             if (e.id == id) {
                 return e;
             }
@@ -169,15 +169,10 @@ public class Equipo implements Comparable<Equipo>, Serializable {
         Equipo team = new Equipo(name);
     return team;
     }
-    
-    public ArrayList<Jugador> players(){
-        ArrayList<Jugador> jugadores;
-        jugadores = Jugador.getJugadorByIdEquipo(this.id);
-    return jugadores;}
    
-    public static Equipo getEquipoByName(String nombre){
+    public static Equipo getEquipoByName(String nombre, ArrayList<Equipo> equipos){
         Equipo ret = new Equipo();
-        for (Equipo e : Utilidades.EQUIPOS) {
+        for (Equipo e : equipos) {
             if (e.nombre.equals(nombre)) {
                 ret = e;
             }

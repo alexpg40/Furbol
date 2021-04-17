@@ -7,7 +7,6 @@ package furbol;
 
 import dao.JugadorDAO;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import utilidades.Utilidades;
 
 public class Furbol {
@@ -18,7 +17,8 @@ public class Furbol {
     public static void main(String[] args) {
         
         JugadorDAO j = new JugadorDAO();
-        ArrayList<Jugador> todasParcelas = j.todasParcelas();
+        ArrayList<Jugador> todosJugadores = j.todosJugadores();
+        Utilidades.leerArrayList(todosJugadores);
         
     }
 }

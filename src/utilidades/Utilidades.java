@@ -163,20 +163,7 @@ public class Utilidades {
             System.out.println("Se ha dado una IOException");
         }
     }
-
-    public static final Equipo EQUIPOS[] = {
-        new Equipo(1, "Atletico de Madrid", 20, 5, 10, 3, 2),
-        new Equipo(2, "Getafe", 12, 1, 8, 5, 2),
-        new Equipo(3, "Valencia", 12, 1, 8, 5, 2),
-        new Equipo(4, "Racing de Santander", 17, 9, 9, 4, 2),
-        new Equipo(5, "Oviedo", 6, 20, 1, 5, 9),
-        new Equipo(6, "Sporting de Gijón", 2, 14, 0, 7, 8)
-    };
-
-    public static final Jugador JUGADORES[] = {
-        new Jugador("Joao", "Felix", 1)
-    };
-
+    
     public static String readXML(String TagName) {
         DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;

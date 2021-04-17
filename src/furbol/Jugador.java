@@ -104,21 +104,21 @@ public class Jugador implements Serializable {
         return "Jugador{" + "nombre=" + nombre + ", apellido=" + apellido + ", goles=" + goles + ", posicion=" + posicion + ", idequipo=" + idequipo + '}';
     }
 
-    public static ArrayList<Jugador> getJugadorByIdEquipo(int idequipo) {
-        ArrayList<Jugador> jugadores = new ArrayList<>();
-        for (Jugador j : Utilidades.JUGADORES) {
+    public static ArrayList<Jugador> getJugadorByIdEquipo(int idequipo, ArrayList<Jugador> jugadores) {
+        ArrayList<Jugador> ret = new ArrayList<>();
+        for (Jugador j : jugadores) {
             if (j.idequipo == idequipo) {
                 jugadores.add(j);
                 break;
             }
         }
-        return jugadores;
+        return ret;
     }
 
     
-    public static Jugador getPlayerById(int id){
+    public static Jugador getPlayerById(int id, ArrayList<Jugador> jugadores){
         Jugador ret = new Jugador();
-        for (Jugador j : Utilidades.JUGADORES) {
+        for (Jugador j : jugadores) {
             if (j.id == id) {
                 ret = j;
                 break;
@@ -126,16 +126,4 @@ public class Jugador implements Serializable {
         }
     return ret;
     }
-    
-    public Equipo playIn() {
-        Equipo e = new Equipo();
-        e = Equipo.getEquipoByID(this.idequipo);
-        return e;
-    }
-
-    public static Jugador createPlayer(String nombre, String apellido, String equipo) {
-        Jugador ret = new Jugador(nombre, apellido, Equipo.getEquipoByName(equipo).getId());
-        return ret;
-    }
-
 }

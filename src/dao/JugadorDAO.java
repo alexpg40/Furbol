@@ -28,7 +28,7 @@ public class JugadorDAO {
         conn = ConexionBD.establecerConexion();
     }
 
-    public ArrayList<Jugador> todasParcelas() {
+    public ArrayList<Jugador> todosJugadores() {
         ArrayList<Jugador> ret = new ArrayList<Jugador>();
         try {
             if (conn == null || conn.isClosed()) {
@@ -36,13 +36,13 @@ public class JugadorDAO {
             }
             try {
                 PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("SELECT * FROM Equipo");
+                pstmt = conn.prepareStatement("SELECT * FROM Jugador");
                 ResultSet prs = pstmt.executeQuery();
                 while (prs.next()) {
-                    int id = prs.getInt("id");
+                    int id = prs.getInt("idJugador");
                     String nombre = prs.getString("nombre");
                     String apellido = prs.getString("apellido");
-                    int goles = prs.getInt("privada");
+                    int goles = prs.getInt("goles");
                     char posicion = prs.getString("posicion").charAt(0);
                     int idequipo = prs.getInt("idEquipo");
                     Jugador jugador = new Jugador(id, nombre, apellido, goles, posicion, idequipo);
