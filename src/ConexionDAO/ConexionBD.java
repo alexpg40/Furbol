@@ -32,7 +32,7 @@ public class ConexionBD {
         try {
             //System.out.println("Conectando a la Base de Datos...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException ex) {
             System.out.println("Se ha producido una SQLException:" + ex.getMessage());

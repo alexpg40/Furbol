@@ -15,16 +15,22 @@ import java.util.LinkedHashSet;
  */
 public class Competicion {
     
+    private int id;
     private String nombre;
     private int temporada;
     private ArrayList<Equipo> participantes = new ArrayList<>();
-    ;
     private LinkedHashSet<Equipo> clasificacion;
     private ArrayList<Partido> partidos = new ArrayList<>();
     
     public Competicion() {
         
     }    
+    
+    public Competicion(int id, String nombre, int temporada){
+        this.id = id;
+        this.nombre = nombre;
+        this.temporada = temporada;
+    }
     
     public Competicion(String nombre, int temporada, ArrayList<Equipo> participantes) {
         this.nombre = nombre;

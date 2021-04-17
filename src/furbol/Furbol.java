@@ -5,7 +5,10 @@
  */
 package furbol;
 
+import dao.CompeticionDAO;
+import dao.EquipoDAO;
 import dao.JugadorDAO;
+import dao.PartidoDAO;
 import java.util.ArrayList;
 import utilidades.Utilidades;
 
@@ -17,8 +20,10 @@ public class Furbol {
     public static void main(String[] args) {
         
         JugadorDAO j = new JugadorDAO();
-        ArrayList<Jugador> todosJugadores = j.todosJugadores();
-        Utilidades.leerArrayList(todosJugadores);
+        ArrayList<Competicion> competiciones = CompeticionDAO.todasCompeticiones();
+        
+        Utilidades.leerArrayList(competiciones);
+        
         
     }
 }

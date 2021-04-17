@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Partido {
 
+    private int id;
     private int idequipolocal;
     private int idequipovisitante;
     private int goleslocal;
@@ -29,11 +30,13 @@ public class Partido {
         this.idequipovisitante = idequipovisitante;
     }
     
-    public Partido(int idequipolocal, int idequipovisitante, String resultado, int goleslocal, int golesvisitante) {
+    public Partido(int id, int idequipolocal, int idequipovisitante, int goleslocal, int golesvisitante, Date fecha) {
+        this.id = id;
         this.idequipolocal = idequipolocal;
         this.idequipovisitante = idequipovisitante;
         this.goleslocal = goleslocal;
         this.golesvisitante = golesvisitante;
+        this.fecha = fecha;
     }
 
     public Partido(Partido p) {
