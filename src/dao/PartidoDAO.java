@@ -91,5 +91,39 @@ public class PartidoDAO {
         }
     }
 
-    
+    public static void actualizarPartido(Partido p) {
+        try {
+            if (conn == null || conn.isClosed()) {
+                conn = ConexionBD.establecerConexion();
+            }
+            try {
+                PreparedStatement pstmt = null;
+                int idPartido = p.getId();
+                pstmt = conn.prepareStatement("UPDATE Partido SET idEquipoLocal = ?, idEquipoVisitante = ?, goles_local = ?, goles_visitante = ?, fecha = ? WHERE idPartido = " + String.valueOf(idPartido));
+                int idEquipoLocal = p.getIdequipolocal();
+                int idEquipoVisitante = p.getIdequipovisitante();
+                int goles_local = p.getGoleslocal();
+                int goles_visitante = p.getGolesvisitante();
+                Date fecha = p.getFecha();
+                pstmt.setInt(1, idEquipoLocal);
+                pstmt.setInt(2, idEquipoVisitante);
+                pstmt.setInt(3, goles_local);
+                pstmt.setInt(4, goles_visitante);
+                pstmt.setDate(5, fecha);
+                pstmt.executeUpdate();
+
+            } catch (SQLException ex) {
+                System.out.println("Se ha producido una SQLException:" + ex.getMessage());
+                Logger.getLogger(JugadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (conn != null) {
+                    ConexionBD.cerrarConexion();
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(JugadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
