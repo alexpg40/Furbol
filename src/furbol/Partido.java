@@ -110,7 +110,7 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" + "id=" + id + '}';
+        return "Partido{" + "id=" + id + ", idequipolocal=" + idequipolocal + ", idequipovisitante=" + idequipovisitante + ", goleslocal=" + goleslocal + ", golesvisitante=" + golesvisitante + ", fecha=" + fecha + '}';
     }
     
     
