@@ -25,7 +25,8 @@ public class Partido {
 
     }
     
-    public Partido(int idequipolocal, int idequipovisitante){
+    public Partido(int id, int idequipolocal, int idequipovisitante){
+        this.id = id;
         this.idequipolocal = idequipolocal;
         this.idequipovisitante = idequipovisitante;
     }
@@ -86,18 +87,32 @@ public class Partido {
         this.fecha = fecha;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public static ArrayList<Partido> generateMatches(ArrayList<Equipo> participantes){
         ArrayList<Partido> ret = new ArrayList<>();
-        for (Equipo e : participantes) {
-            for (Equipo eq : participantes) {
-                Partido partido;
-                Partido visitante;
-                if (!e.equals(eq)) {
-                    partido = new Partido(e.getId(), eq.getId());
+        for (int i = 0; i < participantes.size(); i++) {
+            for (Equipo e : participantes) {
+                if (!e.equals(participantes.get(i))) {
+                    int id = ret.size() +1;
+                    Partido partido = new Partido( id, e.getId(), participantes.get(i).getId());
                     ret.add(partido);
                 }
             }
         }
     return ret;}
+
+    @Override
+    public String toString() {
+        return "Partido{" + "id=" + id + '}';
+    }
+    
+    
     
 }
