@@ -23,7 +23,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -189,4 +191,16 @@ public class Utilidades {
         return ret;
     }
 
+    public static Date inputFecha(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Introduce el dia");
+        int dia = in.nextInt();
+        System.out.println("Introduce el mes");
+        int mes = in.nextInt();
+        System.out.println("Introduce el año");
+        int año = in.nextInt();
+        Date date = new Date(año, mes, dia);
+        return date;
+    }
+    
 }
